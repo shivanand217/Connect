@@ -13,16 +13,10 @@ public class MainActivity extends AppCompatActivity {
     // initial state nothing in the blocks
     int[] gameState = {2,2,2,2,2,2,2,2,2};
 
-    int[][] winningPositions = {{0,1,2},
-                                {3,4,5},
-                                {6,7,8},
-                                {0,3,6},
-                                {1,4,7},
-                                {2,5,8},
-                                {0,4,8},
-                                {2,4,6}};
-
     String[] winning = {"012","345","678","036","147","258","048","246"};
+
+    String p = "";
+    int a=0,b=0,c=0;
 
     public void dropIn(View view) {
         ImageView counter = (ImageView) view;
@@ -50,6 +44,22 @@ public class MainActivity extends AppCompatActivity {
                     .translationYBy(-1000f)
                     .rotation(1000f)
                     .setDuration(500);
+
+            for(int i=0; i < winning.length; i++) {
+                p = winning[i];
+                a = Integer.parseInt(p[0]);
+                b = Integer.parseInt(p[1]);
+                c = Integer.parseInt(p[2]);
+
+                if(gameState[a] == gameState[b] && gameState[b] == gameState[c] && gameState[a] != 2) {
+                    if(gameState[a] == 0) {
+                        Toast.makeText(this, "red wins", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, "yellow wins", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
         }
     }
 
