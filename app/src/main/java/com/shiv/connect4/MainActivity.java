@@ -47,19 +47,18 @@ public class MainActivity extends AppCompatActivity {
 
             for(int i=0; i < winning.length; i++) {
                 p = winning[i];
-                a = Integer.parseInt(p[0]);
-                b = Integer.parseInt(p[1]);
-                c = Integer.parseInt(p[2]);
+                a = Integer.parseInt(String.valueOf(p.charAt(0)));
+                b = Integer.parseInt(String.valueOf(p.charAt(1)));
+                c = Integer.parseInt(String.valueOf(p.charAt(2)));
 
                 if(gameState[a] == gameState[b] && gameState[b] == gameState[c] && gameState[a] != 2) {
                     if(gameState[a] == 0) {
-                        Toast.makeText(this, "red wins", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "yellow wins", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(this, "yellow wins", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "red wins", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
-
         }
     }
 
@@ -68,5 +67,4 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 }
