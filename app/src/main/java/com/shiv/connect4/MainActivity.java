@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /** Reset the board **/
-    public void playAgainClicked(View view) {
+    public void playAgain() {
 
         TextView wins = (TextView) findViewById(R.id.textView2);
         wins.setText("");
@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0; i < gridLayout.getChildCount(); i++) {
             ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
         }
+        
     }
 
     @Override

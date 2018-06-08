@@ -145,9 +145,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/playAgainButton"
-            android:onClick="playAgainClicked"
+            android:onClick="playAgain"
             android:alpha="0"
-            android:background="@color/colorAccent" />
+            android:background="@color/colorAccent"
+            android:layout_marginLeft="50dp" />
 
     </GridLayout>
 
