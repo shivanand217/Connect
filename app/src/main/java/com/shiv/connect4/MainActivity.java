@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     // initial state nothing in the blocks
     int[] gameState = {2,2,2,2,2,2,2,2,2};
 
+    boolean gameIsActive = true;
+
     String[] winning = {"012","345","678","036","147","258","048","246"};
 
     String p = "";
@@ -26,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         String tag = counter.getTag().toString();
         int Tag = Integer.parseInt(tag);
-        System.out.println(Tag);
-
-        Toast.makeText(this, "This tag is "+tag+" !!!", Toast.LENGTH_LONG).show();
 
         if(gameState[Tag] == 2) {
             gameState[Tag] = activePlayer;
@@ -49,14 +48,16 @@ public class MainActivity extends AppCompatActivity {
                     .setDuration(500);
 
             for(int i=0; i < winning.length; i++) {
+
                 p = winning[i];
                 a = Integer.parseInt(String.valueOf(p.charAt(0)));
                 b = Integer.parseInt(String.valueOf(p.charAt(1)));
                 c = Integer.parseInt(String.valueOf(p.charAt(2)));
 
                 if(gameState[a] == gameState[b] && gameState[b] == gameState[c] && gameState[a] != 2) {
-
                     // someone has won
+                    gameIsActive = false;
+
                     if(gameState[a] == 0) {
                         Toast.makeText(this, "yellow wins", Toast.LENGTH_LONG).show();
 
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     /** Reset the board **/
     public void playAgain(View view) {
 
+        gameIsActive = true;
         Toast.makeText(this, "play again clicked", Toast.LENGTH_SHORT).show();
 
         TextView wins = (TextView) findViewById(R.id.textView2);
@@ -112,19 +114,15 @@ public class MainActivity extends AppCompatActivity {
         ImageView i8 = (ImageView) findViewById(R.id.imageView16);
         ImageView i9 = (ImageView) findViewById(R.id.imageView17);
 
-        i1.setAlpha(0);
-        i2.setAlpha(0);
-        i3.setAlpha(0);
-        i4.setAlpha(0);
-        i5.setAlpha(0);
-        i6.setAlpha(0);
-        i7.setAlpha(0);
-        i8.setAlpha(0);
-        i9.setAlpha(0);
-
-        /*for(int i=0; i < gridLayout.getChildCount(); i++) {
-            ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
-        }*/
+        i1.setImageResource(0);
+        i2.setImageResource(0);
+        i3.setImageResource(0);
+        i4.setImageResource(0);
+        i5.setImageResource(0);
+        i6.setImageResource(0);
+        i7.setImageResource(0);
+        i8.setImageResource(0);
+        i9.setImageResource(0);
     }
 
     @Override
