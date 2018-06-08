@@ -148,7 +148,7 @@
             android:onClick="playAgain"
             android:alpha="0"
             android:background="@color/colorAccent"
-            android:layout_marginLeft="50dp" />
+            android:layout_marginLeft="10dp" />
 
     </GridLayout>
 

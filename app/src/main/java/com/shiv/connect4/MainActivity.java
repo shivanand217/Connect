@@ -83,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /** Reset the board **/
-    public void playAgain() {
+    public void playAgain(View view) {
+
+        Toast.makeText(this, "play again clicked", Toast.LENGTH_SHORT).show();
 
         TextView wins = (TextView) findViewById(R.id.textView2);
         wins.setText("");
@@ -100,10 +102,29 @@ public class MainActivity extends AppCompatActivity {
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
 
-        for(int i=0; i < gridLayout.getChildCount(); i++) {
+        ImageView i1 = (ImageView) findViewById(R.id.imageView4);
+        ImageView i2 = (ImageView) findViewById(R.id.imageView10);
+        ImageView i3 = (ImageView) findViewById(R.id.imageView11);
+        ImageView i4 = (ImageView) findViewById(R.id.imageView12);
+        ImageView i5 = (ImageView) findViewById(R.id.imageView13);
+        ImageView i6 = (ImageView) findViewById(R.id.imageView14);
+        ImageView i7 = (ImageView) findViewById(R.id.imageView15);
+        ImageView i8 = (ImageView) findViewById(R.id.imageView16);
+        ImageView i9 = (ImageView) findViewById(R.id.imageView17);
+
+        i1.setAlpha(0);
+        i2.setAlpha(0);
+        i3.setAlpha(0);
+        i4.setAlpha(0);
+        i5.setAlpha(0);
+        i6.setAlpha(0);
+        i7.setAlpha(0);
+        i8.setAlpha(0);
+        i9.setAlpha(0);
+
+        /*for(int i=0; i < gridLayout.getChildCount(); i++) {
             ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
-        }
-        
+        }*/
     }
 
     @Override
