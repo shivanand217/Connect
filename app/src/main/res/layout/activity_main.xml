@@ -22,7 +22,8 @@
         android:background="@drawable/board"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/gridLayout">
 
         <ImageView
             android:id="@+id/imageView4"
@@ -136,13 +137,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:alpha="0" />
 
         <Button
-            android:text="Button"
+            android:text="Play Again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button6" />
+            android:id="@+id/playAgainButton"
+            android:onClick="playAgainClicked"
+            android:alpha="0"
+            android:background="@color/colorAccent" />
 
     </GridLayout>
 

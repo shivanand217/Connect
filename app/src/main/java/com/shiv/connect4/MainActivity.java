@@ -4,7 +4,10 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     String[] winning = {"012","345","678","036","147","258","048","246"};
 
     String p = "";
-    int a=0,b=0,c=0;
+    int a = 0, b = 0, c = 0;
 
     public void dropIn(View view) {
         ImageView counter = (ImageView) view;
@@ -52,13 +55,53 @@ public class MainActivity extends AppCompatActivity {
                 c = Integer.parseInt(String.valueOf(p.charAt(2)));
 
                 if(gameState[a] == gameState[b] && gameState[b] == gameState[c] && gameState[a] != 2) {
+
+                    // someone has won
                     if(gameState[a] == 0) {
                         Toast.makeText(this, "yellow wins", Toast.LENGTH_LONG).show();
+
+                        TextView wins = (TextView) findViewById(R.id.textView2);
+                        wins.setText("Yellow wins");
+                        wins.setAlpha(1);
+
+                        Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
+                        playAgainButton.setAlpha(1);
+
                     } else {
                         Toast.makeText(this, "red wins", Toast.LENGTH_SHORT).show();
+
+                        TextView wins = (TextView) findViewById(R.id.textView2);
+                        wins.setText("Red wins");
+                        wins.setAlpha(1);
+
+                        Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
+                        playAgainButton.setAlpha(1);
                     }
                 }
             }
+        }
+    }
+
+    /** Reset the board **/
+    public void playAgainClicked(View view) {
+
+        TextView wins = (TextView) findViewById(R.id.textView2);
+        wins.setText("");
+        wins.setAlpha(0);
+
+        Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
+        playAgainButton.setAlpha(0);
+
+        activePlayer = 0;
+
+        for(int i=0; i < gameState.length; i++) {
+            gameState[i]=2;
+        }
+
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
+
+        for(int i=0; i < gridLayout.getChildCount(); i++) {
+            ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
         }
     }
 
@@ -67,4 +110,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
 }
